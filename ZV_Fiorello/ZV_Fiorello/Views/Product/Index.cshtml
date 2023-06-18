@@ -1,0 +1,47 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- PRODUCTS START -->
+
+<section id="products">
+    <div class="container">
+        <input type="hidden" id="productsCount" value="@ViewBag.ProductsCount"/>
+        <div class="row" id="productList">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item text-center" data-id="@item.Category.Name.ToLower()">
+                        <div class="img">
+                            @if (item.Images.Count > 0)
+                            {
+                                <a href="">
+                                    <img src="~/img/@(item.Images.FirstOrDefault(i => i.isMain).ImageUrl)" class="img-fluid" alt="">
+                                </a>
+                            }
+                        </div>
+                        <div class="title mt-3">
+                            <h6>@item.Name</h6>
+                        </div>
+                        <div class="price">
+                            <a asp-controller="Basket" asp-action="Addbasket" asp-route-id=@item.Id>
+                                <span class="text-black-50">Add to cart</span>
+                            </a>
+                            <span class="text-black-50">$@Math.Truncate(item.Price)</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="row justify-content-center mb-5">
+            <button class="btn btn-success" id="loadMore">Load More...</button>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS END -->
+

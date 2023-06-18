@@ -1,0 +1,36 @@
+﻿@model List<BasketVM>
+@{
+    ViewData["Title"] = "ShowBasket";
+}
+
+<div class="row">
+    @if (Model.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">BasketCount</th>
+                </tr>
+            </thead>
+            <tbody>
+               @foreach(var item in Model)
+               {
+                    <tr>
+                        <th scope="row"><img src="~/img/@item.ImageUrl"/></th>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.BasketCount</td>
+                        <td>X</td>
+                    </tr>
+               }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <a asp-controller="Home">got to home page</a>
+    }
+</div>

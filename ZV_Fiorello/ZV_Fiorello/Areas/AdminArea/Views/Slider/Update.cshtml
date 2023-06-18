@@ -1,0 +1,27 @@
+﻿@model SliderUpdateVM
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Update</h1>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Slider</h4>
+
+                <form method="post" class="forms-sample" data-val="true" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo"></label>
+                        <input asp-for="Photo" type="file" class="form-control">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-controller="slider" asp-action="index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
