@@ -239,3 +239,4 @@ D:\Computer Science (Main)\Code Academy\BackEnd\Homeworks\HW (20-05-2023)\ZV_Fio
 D:\Computer Science (Main)\Code Academy\BackEnd\Homeworks\HW (20-05-2023)\ZV_Fiorello\ZV_Fiorello\bin\Debug\net6.0\zh-CN\Humanizer.resources.dll
 D:\Computer Science (Main)\Code Academy\BackEnd\Homeworks\HW (20-05-2023)\ZV_Fiorello\ZV_Fiorello\bin\Debug\net6.0\zh-Hans\Humanizer.resources.dll
 D:\Computer Science (Main)\Code Academy\BackEnd\Homeworks\HW (20-05-2023)\ZV_Fiorello\ZV_Fiorello\bin\Debug\net6.0\zh-Hant\Humanizer.resources.dll
+D:\Computer Science (Main)\Code Academy\BackEnd\Homeworks\HW (20-05-2023)\ZV_Fiorello\ZV_Fiorello\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

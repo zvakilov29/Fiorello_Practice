@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bXZWwnoIFuwtpvKTITHu4edVdZLBdwG8PQRTW3VUUNw=",
+  "Hash": "aG3do/0wrzgmaPFN+SGmdb3ncQ/OpAn1gDm3E0LSJMI=",
   "Source": "ZV_Fiorello",
   "BasePath": "_content/ZV_Fiorello",
   "Mode": "Default",
@@ -2259,23 +2259,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css.map"
-    },
-    {
-      "Identity": "D:\\Computer Science (Main)\\Code Academy\\BackEnd\\Homeworks\\HW (20-05-2023)\\ZV_Fiorello\\ZV_Fiorello\\wwwroot\\img\\6a764d60-ca41-456e-868d-e801060eefb8beautiful-vase-with-flowers-on-grey-background-700-218784378.jpg",
-      "SourceId": "ZV_Fiorello",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Computer Science (Main)\\Code Academy\\BackEnd\\Homeworks\\HW (20-05-2023)\\ZV_Fiorello\\ZV_Fiorello\\wwwroot\\",
-      "BasePath": "_content/ZV_Fiorello",
-      "RelativePath": "img/6a764d60-ca41-456e-868d-e801060eefb8beautiful-vase-with-flowers-on-grey-background-700-218784378.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\6a764d60-ca41-456e-868d-e801060eefb8beautiful-vase-with-flowers-on-grey-background-700-218784378.jpg"
     },
     {
       "Identity": "D:\\Computer Science (Main)\\Code Academy\\BackEnd\\Homeworks\\HW (20-05-2023)\\ZV_Fiorello\\ZV_Fiorello\\wwwroot\\img\\blog-feature-img-1.jpg",

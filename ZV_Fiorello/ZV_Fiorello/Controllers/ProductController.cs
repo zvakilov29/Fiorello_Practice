@@ -37,5 +37,14 @@ namespace ZV_Fiorello.Controllers
 
             return PartialView("_LoadMorePartial", products);
         }
+
+        public IActionResult Search(string searchText)
+        {
+            var searchedProducts = _appDbContext.Products
+                .Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
+                .ToList();
+
+            return PartialView("_SearchPartial", searchedProducts);
+        }
     }
 }
