@@ -1,0 +1,11 @@
+﻿@model int
+
+<a asp-controller="basket" asp-action="showbasket">
+    <i class="fas fa-shopping-bag"></i>
+    <sup class="rounded-circle">@Model</sup>
+    <span>CART ($0)</span>
+</a>
+
+<ul class="list-unstyled py-3">
+    <li class="">No products in the cart.</li>
+</ul>

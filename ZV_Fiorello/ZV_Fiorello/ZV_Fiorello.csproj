@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Services\CategoryServ\" />
+    <Folder Include="Services\SliderServ\" />
   </ItemGroup>
 
 </Project>

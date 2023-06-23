@@ -1,35 +1,19 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ZV_Fiorello.DAL;
+using ZV_Fiorello.Extensions;
 using ZV_Fiorello.Models;
+using ZV_Fiorello.Services.ProductServ;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<AppDbContext>(options => {
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-});
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
-});
-builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
-{
-    options.Password.RequiredLength = 8;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequireDigit = true;
-    options.Password.RequireNonAlphanumeric = true;
 
-    options.User.RequireUniqueEmail = true;
-
-    options.Lockout.AllowedForNewUsers = true;
-    options.Lockout.MaxFailedAccessAttempts = 3;
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-}).AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
+builder.Services.AddApplicationServices();
+builder.Services.AddApplicationDbContext(configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddCustomIdentity();
+builder.Services.AddCustomSession();
 
 var app = builder.Build();
 

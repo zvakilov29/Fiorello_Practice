@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using ZV_Fiorello.DAL;
 using ZV_Fiorello.Models;
@@ -27,8 +28,8 @@ namespace ZV_Fiorello.Controllers
             if (id == null)
                 return NotFound();
 
-            
-            var product = _dbContext.Products.Find(id);
+            var product = _dbContext.Products.SingleOrDefault(p => p.Id == id);
+
             if (product == null)
                 return NotFound();
 
@@ -44,12 +45,11 @@ namespace ZV_Fiorello.Controllers
             }
 
             var existsProduct = products.Find(x => x.Id == product.Id);
-            if(existsProduct == null)
+            if (existsProduct == null)
             {
                 BasketVM basketVM = new BasketVM()
                 {
                     Id = product.Id,
-                    Name = product.Name,
                     BasketCount = 1
                 };
                 products.Add(basketVM);
@@ -58,12 +58,10 @@ namespace ZV_Fiorello.Controllers
             {
                 existsProduct.BasketCount++;
             }
-           
-
 
             Response.Cookies.Append("basket", JsonConvert.SerializeObject(products), new CookieOptions { MaxAge = TimeSpan.FromMinutes(15) });
 
-            return Content($"{product.Name} submitted successfully");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult ShowBasket()
@@ -71,9 +69,39 @@ namespace ZV_Fiorello.Controllers
             //var sessionResult = HttpContext.Session.GetString("Book");
             //var cookiesResult = Request.Cookies["Book"];
 
+            string basket = Request.Cookies["basket"];
+            List<BasketVM> products;
+            if (basket == null)
+            {
+                products = new List<BasketVM>();
+            }
+            else
+            {
+                var basketProducts = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+                products = new List<BasketVM>();
 
-            var result = JsonConvert.DeserializeObject<List<BasketVM>>(Request.Cookies["basket"]);
-            return Json(result);
+                foreach (var basketProduct in basketProducts)
+                {
+                    var product = _dbContext.Products
+                        .Include(p => p.Images)
+                        .SingleOrDefault(p => p.Id == basketProduct.Id);
+
+                    if (product != null)
+                    {
+                        BasketVM basketVM = new BasketVM()
+                        {
+                            Id = product.Id,
+                            Name = product.Name,
+                            Price = product.Price,
+                            ImageUrl = product.Images?.FirstOrDefault(img => img.isMain == true)?.ImageUrl,
+                            BasketCount = basketProduct.BasketCount
+                        };
+                        products.Add(basketVM);
+                    }
+                }
+            }
+
+            return View(products);
         } 
 
         
